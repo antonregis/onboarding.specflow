@@ -465,7 +465,9 @@
     <Compile Include="SpecflowPages\Helpers\Driver.cs" />
     <Compile Include="SpecflowPages\Helpers\ExcelLibHelper.cs" />
     <Compile Include="SpecflowPages\Pages\HomePage.cs" />
-    <Compile Include="SpecflowPages\Pages\ProfilePage.cs" />
+    <Compile Include="SpecflowPages\Pages\ProfileSkill.cs" />
+    <Compile Include="SpecflowPages\Pages\ProfileEducation.cs" />
+    <Compile Include="SpecflowPages\Pages\ProfileCertification.cs" />
     <Compile Include="SpecflowPages\Pages\SignIn.cs" />
     <Compile Include="SpecflowPages\Utils\CommonDriver.cs" />
     <Compile Include="SpecflowPages\Utils\Start.cs" />

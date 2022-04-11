@@ -14,7 +14,9 @@ namespace MarsQA_1
         // Initializing page objects
         HomePage homePageObj = new HomePage();
         SignIn signInObj = new SignIn();
-        ProfilePage profilePageObj = new ProfilePage();
+        ProfileSkill profileSkillPageObj = new ProfileSkill();
+        ProfileEducation profileEduPageObj = new ProfileEducation();
+        ProfileCertification profileCertPageObj = new ProfileCertification();
 
 
         [Given(@"I logged into Mars website successfully")]
@@ -37,15 +39,15 @@ namespace MarsQA_1
         public void WhenIAddAProfileSkillEntry()
         {
             // Add skill entry
-            profilePageObj.AddSkill(driver);
+            profileSkillPageObj.AddSkill(driver);
         }
 
         [Then(@"the skill entry should be added successfully")]
         public void ThenTheSkillEntryShouldBeAddedSuccessfully()
         {
             // Get entered skill & level
-            string enteredSkill = profilePageObj.GetSkill(driver);
-            string enteredLevel = profilePageObj.GetLevel(driver);
+            string enteredSkill = profileSkillPageObj.GetSkill(driver);
+            string enteredLevel = profileSkillPageObj.GetLevel(driver);
 
             // Assertion
             Assert.That((enteredSkill == "Skill1"), "Failed: Skill mismatch");
@@ -58,18 +60,18 @@ namespace MarsQA_1
         public void WhenIAddAProfileEducationEntry()
         {
             // Add education entry
-            profilePageObj.AddEducation(driver);
+            profileEduPageObj.AddEducation(driver);
         }
 
         [Then(@"the education entry should be added successfully")]
         public void ThenTheEducationEntryShouldBeAddedSuccessfully()
         {
             // Get entered education entry
-            string enteredCountry = profilePageObj.GetCountry(driver);
-            string enteredInsitute = profilePageObj.GetInstitute(driver);
-            string enteredTitle = profilePageObj.GetTitle(driver);
-            string enteredDegree = profilePageObj.GetDegree(driver);
-            string enteredGraduationYear = profilePageObj.GetGraduationYear(driver);
+            string enteredCountry = profileEduPageObj.GetCountry(driver);
+            string enteredInsitute = profileEduPageObj.GetInstitute(driver);
+            string enteredTitle = profileEduPageObj.GetTitle(driver);
+            string enteredDegree = profileEduPageObj.GetDegree(driver);
+            string enteredGraduationYear = profileEduPageObj.GetGraduationYear(driver);
 
             // Assertion
             Assert.That((enteredCountry == "New Zealand"), "Failed: Country mismatch");
@@ -85,16 +87,16 @@ namespace MarsQA_1
         public void WhenIAddAProfileCertificationEntry()
         {
             // Add certification entry
-            profilePageObj.AddCertification(driver);
+            profileCertPageObj.AddCertification(driver);
         }
 
         [Then(@"the certification entry should be added successfully")]
         public void ThenTheCertificationEntryShouldBeAddedSuccessfully()
         {
             // Get entered certification entry
-            string enteredCertificate = profilePageObj.GetCertficate(driver);
-            string enteredFrom = profilePageObj.GetFrom(driver);
-            string enteredYear = profilePageObj.GetYear(driver);
+            string enteredCertificate = profileCertPageObj.GetCertficate(driver);
+            string enteredFrom = profileCertPageObj.GetFrom(driver);
+            string enteredYear = profileCertPageObj.GetYear(driver);
 
             // Assertion
             Assert.That((enteredCertificate == "Certified Tester Foundation Level"), "Failed: Certificate mismatch");
