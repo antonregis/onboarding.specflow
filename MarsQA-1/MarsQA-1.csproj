@@ -458,7 +458,6 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Feature\Profile.feature.cs" />
     <Compile Include="SpecflowPages\Helpers\CommonMethods.cs" />
     <Compile Include="SpecflowPages\Helpers\ConstantHelpers.cs" />
     <Compile Include="SpecflowPages\Helpers\Driver.cs" />
@@ -467,7 +466,7 @@
     <Compile Include="SpecflowPages\Pages\ProfileSkill.cs" />
     <Compile Include="SpecflowPages\Pages\ProfileEducation.cs" />
     <Compile Include="SpecflowPages\Pages\ProfileCertification.cs" />
-    <Compile Include="SpecflowPages\Pages\SignIn.cs" />
+    <Compile Include="SpecflowPages\Pages\LogIn.cs" />
     <Compile Include="SpecflowPages\Utils\CommonDriver.cs" />
     <Compile Include="SpecflowPages\Utils\Start.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

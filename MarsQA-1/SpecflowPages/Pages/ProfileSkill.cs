@@ -1,4 +1,5 @@
-﻿using MarsQA_1.Utils;
+﻿using MarsQA_1.Helpers;
+using MarsQA_1.Utils;
 using NUnit.Framework;
 using OpenQA.Selenium;
 using System;
@@ -21,12 +22,16 @@ namespace MarsQA_1.Pages
             IWebElement addNewButton = driver.FindElement(By.XPath("//*[@id='account-profile-section']/div/section[2]/div/div/div/div[3]/form/div[3]/div/div[2]/div/table/thead/tr/th[3]/div"));
             addNewButton.Click();
 
+            // Referencing to an excel file and sheet name
+            ExcelLibHelper.PopulateInCollection(@"MarsQA-1\SpecflowTests\Data\Data.xlsx", "Skill");
+
             // Enter Skill
             IWebElement addSkillTextbox = driver.FindElement(By.XPath("//body/div[@id='account-profile-section']/div[1]/section[2]/div[1]/div[1]/div[1]/div[3]/form[1]/div[3]/div[1]/div[2]/div[1]/div[1]/div[1]/input[1]"));
-            addSkillTextbox.SendKeys("Skill1");
+            addSkillTextbox.SendKeys(ExcelLibHelper.ReadData(2, "Skill"));
 
-            // Select Skill level option
-            IWebElement skillLevelOption = driver.FindElement(By.XPath("//option[contains(text(),'Intermediate')]"));
+            // Select Skill level option]
+            string strXpathLevel = String.Format("//option[contains(text(),'{0}')]", ExcelLibHelper.ReadData(2, "Level"));
+            IWebElement skillLevelOption = driver.FindElement(By.XPath(strXpathLevel));
             skillLevelOption.Click();
 
             // Click Add button

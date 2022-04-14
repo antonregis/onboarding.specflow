@@ -1,4 +1,5 @@
-﻿using MarsQA_1.Utils;
+﻿using MarsQA_1.Helpers;
+using MarsQA_1.Utils;
 using NUnit.Framework;
 using OpenQA.Selenium;
 using System;
@@ -21,16 +22,20 @@ namespace MarsQA_1.Pages
             IWebElement addNewButton = driver.FindElement(By.XPath("//*[@id='account-profile-section']/div/section[2]/div/div/div/div[3]/form/div[5]/div[1]/div[2]/div/table/thead/tr/th[4]/div"));
             addNewButton.Click();
 
+            // Referencing to an excel file and sheet name
+            ExcelLibHelper.PopulateInCollection(@"MarsQA-1\SpecflowTests\Data\Data.xlsx", "Certification");
+
             // Enter Certificate or award
             IWebElement certificateTextbox = driver.FindElement(By.XPath("//*[@name='certificationName']"));
-            certificateTextbox.SendKeys("Certified Tester Foundation Level");
+            certificateTextbox.SendKeys(ExcelLibHelper.ReadData(2, "Certificate"));
 
             // Enter Certified from 
             IWebElement certifiedFromTextbox = driver.FindElement(By.XPath("//*[@name='certificationFrom']"));
-            certifiedFromTextbox.SendKeys("ISTQB");
+            certifiedFromTextbox.SendKeys(ExcelLibHelper.ReadData(2, "From"));
 
             // Select year of completion
-            IWebElement yearOfCompletionOption = driver.FindElement(By.XPath("//option[contains(text(),'2022')]"));
+            string strXpathCertificationYear = String.Format("//option[contains(text(),'{0}')]", ExcelLibHelper.ReadData(2, "Year"));
+            IWebElement yearOfCompletionOption = driver.FindElement(By.XPath(strXpathCertificationYear));
             yearOfCompletionOption.Click();
 
             // Click Add button

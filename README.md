@@ -25,6 +25,6 @@
 
 
 **TASK 2: Identify 3 complex test cases and automate them:**
-- TC01 Add profile skill entry
-- TC02 Add profile education entry
-- TC03 Add profile certification entry
+- Add profile skill entry
+- Add profile education entry
+- Add profile certification entry

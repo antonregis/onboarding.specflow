@@ -1,4 +1,5 @@
-﻿using MarsQA_1.Utils;
+﻿using MarsQA_1.Helpers;
+using MarsQA_1.Utils;
 using NUnit.Framework;
 using OpenQA.Selenium;
 using System;
@@ -21,24 +22,30 @@ namespace MarsQA_1.Pages
             IWebElement addNewButton = driver.FindElement(By.XPath("//*[@id='account-profile-section']/div/section[2]/div/div/div/div[3]/form/div[4]/div/div[2]/div/table/thead/tr/th[6]/div"));
             addNewButton.Click();
 
+            // Referencing to an excel file and sheet name
+            ExcelLibHelper.PopulateInCollection(@"MarsQA-1\SpecflowTests\Data\Data.xlsx", "Education");
+
             // Enter institute name
             IWebElement instituteTextbox = driver.FindElement(By.XPath("//*[@name='instituteName']"));
-            instituteTextbox.SendKeys("AUT");
+            instituteTextbox.SendKeys(ExcelLibHelper.ReadData(2, "Institute"));
 
             // Select country of school
-            IWebElement countryOfinstituteOption = driver.FindElement(By.XPath("//option[contains(text(),'New Zealand')]"));
+            string strXpathCountry = String.Format("//option[contains(text(),'{0}')]", ExcelLibHelper.ReadData(2, "Country"));
+            IWebElement countryOfinstituteOption = driver.FindElement(By.XPath(strXpathCountry));
             countryOfinstituteOption.Click();
 
             // Select title of degree
-            IWebElement titleOption = driver.FindElement(By.XPath("//option[contains(text(),'Associate')]"));
+            string strXpathTitle = String.Format("//option[contains(text(),'{0}')]", ExcelLibHelper.ReadData(2, "Title"));
+            IWebElement titleOption = driver.FindElement(By.XPath(strXpathTitle));
             titleOption.Click();
 
             // Enter Degree
             IWebElement degreeTextbox = driver.FindElement(By.XPath("//*[@name='degree']"));
-            degreeTextbox.SendKeys("Test Analyst");
+            degreeTextbox.SendKeys(ExcelLibHelper.ReadData(2, "Degree"));
 
             // Select year of graduation
-            IWebElement yearOfGraduationOption = driver.FindElement(By.XPath("//option[contains(text(),'2022')]"));
+            string strXpathGraduationYear = String.Format("//option[contains(text(),'{0}')]", ExcelLibHelper.ReadData(2, "Year"));
+            IWebElement yearOfGraduationOption = driver.FindElement(By.XPath(strXpathGraduationYear));
             yearOfGraduationOption.Click();
 
             // Click Add button

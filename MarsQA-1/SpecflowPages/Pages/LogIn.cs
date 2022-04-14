@@ -1,4 +1,5 @@
-﻿using MarsQA_1.Utils;
+﻿using MarsQA_1.Helpers;
+using MarsQA_1.Utils;
 using NUnit.Framework;
 using OpenQA.Selenium;
 using System;
@@ -9,19 +10,22 @@ using System.Threading.Tasks;
 
 namespace MarsQA_1.Pages
 {
-    internal class SignIn
+    internal class LogIn
     {
-        public void SignInSteps(IWebDriver driver)
+        public void LogInSteps(IWebDriver driver)
         {
             try
-            { 
+            {
+                // Referencing to an excel file and sheet name
+                ExcelLibHelper.PopulateInCollection(@"MarsQA-1\SpecflowTests\Data\Mars.xlsx", "Credentials");
+
                 // Identify email textbox and enter valid email
                 IWebElement emailTextbox = driver.FindElement(By.XPath("//INPUT[@name='email']"));
-                emailTextbox.SendKeys("anton.regis@gmail.com");
+                emailTextbox.SendKeys(ExcelLibHelper.ReadData(2, "username"));
 
                 // Identify password textbox and enter valid password
                 IWebElement passwordTextbox = driver.FindElement(By.XPath("//INPUT[@name='password']"));
-                passwordTextbox.SendKeys("Passw0rd");
+                passwordTextbox.SendKeys(ExcelLibHelper.ReadData(2, "password"));
 
                 // Identify log in button and click
                 IWebElement loginButton = driver.FindElement(By.XPath("//button[contains(text(),'Login')]"));

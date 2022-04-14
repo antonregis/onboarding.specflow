@@ -12,7 +12,7 @@ namespace MarsQA_1.StepDefinitions
     {
         // Initializing page objects
         HomePage homePageObj = new HomePage();
-        SignIn signInObj = new SignIn();
+        LogIn logInObj = new LogIn();
         ProfileSkill profileSkillPageObj = new ProfileSkill();
 
 
@@ -27,7 +27,7 @@ namespace MarsQA_1.StepDefinitions
             homePageObj.GoToSignInPage(driver);
 
             // SignIn to website
-            signInObj.SignInSteps(driver);
+            logInObj.LogInSteps(driver);
         }
 
         [When(@"I add a profile skill entry")]
