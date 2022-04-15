@@ -485,7 +485,7 @@
     <None Include="Feature\F03_ProfileCertification.feature" />
     <None Include="Feature\F02_ProfileEducation.feature" />
     <None Include="Feature\F01_ProfileSkill.feature" />
-    <None Include="Feature\Profile.feature" />
+    <None Include="Feature\Task1_Profile.feature" />
     <None Include="libmongocrypt.dylib" />
     <None Include="libmongocrypt.so" />
     <None Include="SpecflowTests\Data\Data.xlsx" />

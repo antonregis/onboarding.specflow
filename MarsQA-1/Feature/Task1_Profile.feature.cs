@@ -28,7 +28,7 @@ namespace MarsQA_1.Feature
         
         private static string[] featureTags = ((string[])(null));
         
-#line 1 "Profile.feature"
+#line 1 "Task1_Profile.feature"
 #line hidden
         
         [NUnit.Framework.OneTimeSetUpAttribute()]
