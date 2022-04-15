@@ -458,6 +458,10 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Feature\F01_ProfileSkill.feature.cs" />
+    <Compile Include="Feature\F02_ProfileEducation.feature.cs" />
+    <Compile Include="Feature\F03_ProfileCertification.feature.cs" />
+    <Compile Include="Feature\Task1_Profile.feature.cs" />
     <Compile Include="SpecflowPages\Helpers\CommonMethods.cs" />
     <Compile Include="SpecflowPages\Helpers\ConstantHelpers.cs" />
     <Compile Include="SpecflowPages\Helpers\Driver.cs" />
