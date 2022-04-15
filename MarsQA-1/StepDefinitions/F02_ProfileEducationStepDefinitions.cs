@@ -7,7 +7,7 @@ using TechTalk.SpecFlow;
 namespace MarsQA_1.StepDefinitions
 {
     [Binding]
-    public class ProfileEducationStepDefinitions : CommonDriver
+    public class F02_ProfileEducationStepDefinitions : CommonDriver
     {
         // Initializing page objects
         ProfileEducation profileEduPageObj = new ProfileEducation();

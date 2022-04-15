@@ -32,7 +32,7 @@ namespace MarsQA_1.Pages
                 loginButton.Click();
 
                 // Wait for Languages button to load
-                Wait.WaitToBeClickable(driver, "XPath", "//a[contains(text(),'Languages')]", 4);
+                Wait.WaitToBeClickable(driver, "XPath", "//a[contains(text(),'Languages')]", 5);
             }
             catch (Exception ex)
             {

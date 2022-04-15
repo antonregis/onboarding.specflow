@@ -7,7 +7,7 @@ using TechTalk.SpecFlow;
 namespace MarsQA_1.StepDefinitions
 {
     [Binding]
-    public class ProfileCertificationStepDefinitions : CommonDriver
+    public class F03_ProfileCertificationStepDefinitions : CommonDriver
     {
         // Initializing page objects
         ProfileCertification profileCertPageObj = new ProfileCertification();

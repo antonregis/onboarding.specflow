@@ -1,4 +1,4 @@
-﻿Feature: ProfileCertification
+﻿Feature: F03_ProfileCertification
 
 As a seller, I want the feature to add my Profile Certification so that 
 the people seeking for some skills can look into my details.

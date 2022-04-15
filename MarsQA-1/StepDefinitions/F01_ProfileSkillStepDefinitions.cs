@@ -8,27 +8,10 @@ using TechTalk.SpecFlow;
 namespace MarsQA_1.StepDefinitions
 {
     [Binding]
-    public class ProfileSkillStepDefinitions : CommonDriver
+    public class F01_ProfileSkillStepDefinitions : CommonDriver
     {
         // Initializing page objects
-        HomePage homePageObj = new HomePage();
-        LogIn logInObj = new LogIn();
         ProfileSkill profileSkillPageObj = new ProfileSkill();
-
-
-        [Given(@"I logged into Mars website successfully")]
-        public void GivenILoggedIntoMarsWebsiteSuccessfully()
-        {
-            // Open chrome browser
-            driver = new ChromeDriver();
-            driver.Manage().Window.Maximize();
-
-            // Go to Mars website and SignIn page
-            homePageObj.GoToSignInPage(driver);
-
-            // SignIn to website
-            logInObj.LogInSteps(driver);
-        }
 
         [When(@"I add a profile skill entry")]
         public void WhenIAddAProfileSkillEntry()
@@ -47,12 +30,6 @@ namespace MarsQA_1.StepDefinitions
             // Assertion
             Assert.That((enteredSkill == "Skill1"), "Failed: Skill mismatch");
             Assert.That((enteredLevel == "Intermediate"), "Failed: Level mismatch");
-        }
-
-        [Then(@"close test run")]
-        public void ThenCloseTestRun()
-        {
-            driver.Quit();
         }
     }
 }

@@ -10,6 +10,7 @@
 **TOOLS/FRAMEWORK USED:**
 - Automation with selenium webdriver using C#
 - BDD - Specflow
+- ExcelDataReader (NuGet package)
 
 **TASK 1: Write all possible test cases on the SpecFlow Feature file**
 - TC01 Add profile skill entry
@@ -25,6 +26,6 @@
 
 
 **TASK 2: Identify 3 complex test cases and automate them:**
-- Add profile skill entry
-- Add profile education entry
-- Add profile certification entry
+- F01 Profile skill feature \ Add profile skill entry
+- F02 Profile education feature \ Add profile education entry
+- F03 Profile certification feature \ Add profile certification entry

@@ -1,4 +1,4 @@
-﻿Feature: ProfileEducation
+﻿Feature: F02_ProfileEducation
 
 As a seller, I want the feature to add my Profile Education so that 
 the people seeking for some skills can look into my details.
