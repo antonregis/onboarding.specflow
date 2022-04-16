@@ -1,26 +1,19 @@
 ﻿using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 
 namespace MarsQA_1.Helpers
 {
     public class Driver
     {
-        //Initialize the browser
+        // Initialize the browser
         public static IWebDriver driver { get; set; }
 
         public void Initialize()
         {
-            //Defining the browser
+            // Open and maximise chrome browser
             driver = new ChromeDriver();
-            TurnOnWait();
-
-            //Maximise the window
-            driver.Manage().Window.Maximize();
+            driver.Manage().Window.Maximize(); 
         }
 
         public static string BaseUrl
@@ -28,14 +21,7 @@ namespace MarsQA_1.Helpers
             get { return ConstantHelpers.Url; }
         }
 
-
-        //Implicit Wait
-        public static void TurnOnWait()
-        {
-            driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(5);
-
-        }
-
+        // Go to home page
         public static void NavigateUrl()
         {
             driver.Navigate().GoToUrl(BaseUrl);
@@ -46,6 +32,5 @@ namespace MarsQA_1.Helpers
         {
             driver.Quit();
         }
-
     }
 }

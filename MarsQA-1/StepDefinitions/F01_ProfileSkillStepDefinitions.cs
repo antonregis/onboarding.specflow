@@ -1,20 +1,19 @@
+using MarsQA_1.Helpers;
 using MarsQA_1.Pages;
-using MarsQA_1.Utils;
 using NUnit.Framework;
-using OpenQA.Selenium.Chrome;
-using System;
 using TechTalk.SpecFlow;
+
 
 namespace MarsQA_1.StepDefinitions
 {
     [Binding]
-    public class F01_ProfileSkillStepDefinitions : CommonDriver
+    public class F01_ProfileSkillStepDefinitions : Driver
     {
         // Initializing page objects
         ProfileSkill profileSkillPageObj = new ProfileSkill();
 
-        [When(@"I add a profile skill entry")]
-        public void WhenIAddAProfileSkillEntry()
+        [Given(@"I add a profile skill entry")]
+        public void GivenIAddAProfileSkillEntry()
         {
             // Add skill entry
             profileSkillPageObj.AddSkill(driver);

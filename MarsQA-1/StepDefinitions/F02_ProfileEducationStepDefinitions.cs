@@ -1,19 +1,19 @@
 using MarsQA_1.Pages;
-using MarsQA_1.Utils;
+using MarsQA_1.Helpers;
 using NUnit.Framework;
-using System;
 using TechTalk.SpecFlow;
+
 
 namespace MarsQA_1.StepDefinitions
 {
     [Binding]
-    public class F02_ProfileEducationStepDefinitions : CommonDriver
+    public class F02_ProfileEducationStepDefinitions : Driver
     {
         // Initializing page objects
         ProfileEducation profileEduPageObj = new ProfileEducation();
 
 
-        [When(@"I add a profile education entry")]
+        [Given(@"I add a profile education entry")]
         public void WhenIAddAProfileEducationEntry()
         {
             // Add education entry

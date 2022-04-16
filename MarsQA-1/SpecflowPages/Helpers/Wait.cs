@@ -2,15 +2,20 @@
 using OpenQA.Selenium.Support.UI;
 using SeleniumExtras.WaitHelpers;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace MarsQA_1.Utils
+
+namespace MarsQA_1.Helpers
 {
     public class Wait
     {
+        // Implicit wait
+        public static void TurnOnWait(IWebDriver driver)
+        {
+            driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(5);
+
+        }
+
+        // Explicit wait
         public static void WaitToBeClickable(IWebDriver driver, string locator, string locatorValue, int seconds)
         {
             var wait = new WebDriverWait(driver, new TimeSpan(0, 0, seconds));
@@ -20,16 +25,25 @@ namespace MarsQA_1.Utils
                 wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath(locatorValue)));
             }
 
-            if (locator == "Id")
+            else if (locator == "Id")
             {
                 wait.Until(ExpectedConditions.ElementToBeClickable(By.Id(locatorValue)));
             }
 
-            if (locator == "CssSelector")
+            else if (locator == "CssSelector")
             {
                 wait.Until(ExpectedConditions.ElementToBeClickable(By.CssSelector(locatorValue)));
             }
 
+            else
+            {
+                Console.WriteLine(" ■  ■  ■ No Wait locator value! ■  ■  ■ ");
+            }
+        }
+
+        internal static void TurnOnWait()
+        {
+            throw new NotImplementedException();
         }
 
         public static void WaitToBeVisible(IWebDriver driver, string locator, string locatorValue, int seconds)

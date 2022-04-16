@@ -1,19 +1,19 @@
+using MarsQA_1.Helpers;
 using MarsQA_1.Pages;
-using MarsQA_1.Utils;
 using NUnit.Framework;
-using System;
 using TechTalk.SpecFlow;
+
 
 namespace MarsQA_1.StepDefinitions
 {
     [Binding]
-    public class F03_ProfileCertificationStepDefinitions : CommonDriver
+    public class F03_ProfileCertificationStepDefinitions : Driver
     {
         // Initializing page objects
         ProfileCertification profileCertPageObj = new ProfileCertification();
 
 
-        [When(@"I add a profile certification entry")]
+        [Given(@"I add a profile certification entry")]
         public void WhenIAddAProfileCertificationEntry()
         {
             // Add certification entry
