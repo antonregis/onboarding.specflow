@@ -26,8 +26,7 @@ namespace MarsQA_1.Helpers
                 var fileName = new StringBuilder(folderLocation);
 
                 fileName.Append(ScreenShotFileName);
-                fileName.Append(DateTime.Now.ToString("_dd-mm-yyyy_mss"));
-                //fileName.Append(DateTime.Now.ToString("dd-mm-yyyym_ss"));
+                fileName.Append(DateTime.Now.ToString("_yyyy-MM-dd_HHmmss"));
                 fileName.Append(".jpeg");
                 screenShot.SaveAsFile(fileName.ToString(), ScreenshotImageFormat.Jpeg);
                 return fileName.ToString();

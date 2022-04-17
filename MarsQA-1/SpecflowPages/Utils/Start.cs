@@ -1,6 +1,8 @@
-﻿using MarsQA_1.Helpers;
+﻿using AventStack.ExtentReports;
+using MarsQA_1.Helpers;
 using MarsQA_1.Pages;
 using TechTalk.SpecFlow;
+using static MarsQA_1.Helpers.CommonMethods;
 
 
 namespace MarsQA_1.Utils
@@ -8,6 +10,7 @@ namespace MarsQA_1.Utils
     [Binding]
     public class Start : Driver
     {
+        private static ExtentReports extent;
 
         [BeforeScenario]
         public void Setup()
@@ -29,12 +32,12 @@ namespace MarsQA_1.Utils
         public void TearDown()
         {
 
-            // Screenshot
-            // string img = SaveScreenShotClass.SaveScreenshot(Driver.driver, "Report");
-            // test.Log(LogStatus.Info, "Snapshot below: " + test.AddScreenCapture(img));
-            // test.Log(Status.Info, "Snapshot below: " + test.AddScreenCaptureFromPath(img));
-            
-            
+            // Taking a screenshot
+            string img = SaveScreenShotClass.SaveScreenshot(driver, "Report");
+            var extent = new ExtentReports();
+            var test = extent.CreateTest("ReportScreenshot");
+            test.Log(Status.Info, "Snapshot below: " + test.AddScreenCaptureFromPath(img));
+
             //Close the browser
             Close();
 
@@ -43,8 +46,6 @@ namespace MarsQA_1.Utils
 
             // calling Flush writes everything to the log file (Reports)
             // CommonMethods.Extent.Flush();
-
-
         }
     }
 }

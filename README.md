@@ -11,6 +11,7 @@
 - Automation with selenium webdriver using C#
 - BDD - Specflow
 - ExcelDataReader (NuGet package)
+- ExtentReport Screenshots
 
 **TASK 1: Write all possible test cases on the SpecFlow Feature file**
 - TC01 Add profile skill entry
