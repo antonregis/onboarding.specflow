@@ -37,11 +37,11 @@ namespace MarsQA_1.Helpers
         //public static ExtentTest test;
         // public static ExtentReports Extent;
 
-        public static void ExtentReports()
-        {
+        //public static void ExtentReports()
+        //{
             //Extent = new ExtentReports(ConstantHelpers.ReportsPath, true, DisplayOrder.NewestFirst);
             //Extent.LoadConfig(ConstantHelpers.ReportXMLPath);
-        }
+        //}
     }
 }
 
