@@ -9,9 +9,9 @@
         public static string ScreenshotPath = @"MarsQA-1\TestReports\Screenshots\";
 
         //ExtentReportsPath
-        public static string ReportsPath = @"MarsQA-1\TestReports\html\";
+        public static string ReportsPath = @"D:\MarsQA-1\TestReports\Extentreports\";
 
         //ReportXML Path
-        public static string ReportXMLPath = @"MarsQA-1\TestReports\xml\";
+        // public static string ReportXMLPath = @"MarsQA-1\TestReports\xml\";
     }
 }
