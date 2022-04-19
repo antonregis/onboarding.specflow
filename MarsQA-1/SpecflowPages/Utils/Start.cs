@@ -29,7 +29,7 @@ namespace MarsQA_1.Utils
         public static void BeforeFeature(FeatureContext featurecontext)
         {
             // ExtentReport: Create test or the Feature
-            featureName = extent.CreateTest("Feature", featurecontext.FeatureInfo.Title);
+            // featureName = extent.CreateTest("Feature", featurecontext.FeatureInfo.Title);
         }
 
         [BeforeScenario]
@@ -48,37 +48,37 @@ namespace MarsQA_1.Utils
             Wait.WaitToBeClickable(driver, "XPath", "//a[contains(text(),'Languages')]", 8);
 
             // ExtentReport: Create node or the Scenario
-            scenario = featureName.CreateNode("Scenario", scenarioContext.ScenarioInfo.Title);
+            // scenario = featureName.CreateNode("Scenario", scenarioContext.ScenarioInfo.Title);
         }
 
         [AfterStep]
         public void AfterEachStep(ScenarioContext scenariocontext)
         {
-            var stepType = ScenarioStepContext.Current.StepInfo.StepDefinitionType.ToString();
+            //var stepType = ScenarioStepContext.Current.StepInfo.StepDefinitionType.ToString();
 
-            if (scenariocontext.TestError == null)
-            {
-                if (stepType == "Given")
-                    scenario.CreateNode<Given>(ScenarioStepContext.Current.StepInfo.Text);
-                else if (stepType == "When")
-                    scenario.CreateNode<When>(ScenarioStepContext.Current.StepInfo.Text);
-                else if (stepType == "Then")
-                    scenario.CreateNode<Then>(ScenarioStepContext.Current.StepInfo.Text);
-                else if (stepType == "And")
-                    scenario.CreateNode<And>(ScenarioStepContext.Current.StepInfo.Text);
-            }
+            //if (scenariocontext.TestError == null)
+            //{
+            //    if (stepType == "Given")
+            //        scenario.CreateNode("Given", ScenarioStepContext.Current.StepInfo.Text);
+            //    else if (stepType == "When")
+            //        scenario.CreateNode("When", ScenarioStepContext.Current.StepInfo.Text);
+            //    else if (stepType == "Then")
+            //        scenario.CreateNode("Then", ScenarioStepContext.Current.StepInfo.Text);
+            //    else if (stepType == "And")
+            //        scenario.CreateNode("And", ScenarioStepContext.Current.StepInfo.Text);
+            //}
 
-            if (scenariocontext.TestError != null)
-            {
-                if (stepType == "Given")
-                    scenario.CreateNode<Given>(ScenarioStepContext.Current.StepInfo.Text).Fail(scenariocontext.TestError.Message);
-                if (stepType == "When")
-                    scenario.CreateNode<When>(ScenarioStepContext.Current.StepInfo.Text).Fail(scenariocontext.TestError.Message);
-                if (stepType == "Then")
-                    scenario.CreateNode<Then>(ScenarioStepContext.Current.StepInfo.Text).Fail(scenariocontext.TestError.Message);
-                if (stepType == "And")
-                    scenario.CreateNode<And>(ScenarioStepContext.Current.StepInfo.Text).Fail(scenariocontext.TestError.Message);
-            }
+            //if (scenariocontext.TestError != null)
+            //{
+            //    if (stepType == "Given")
+            //        scenario.CreateNode("Given", ScenarioStepContext.Current.StepInfo.Text).Fail(scenariocontext.TestError.Message);
+            //    if (stepType == "When")
+            //        scenario.CreateNode("When", ScenarioStepContext.Current.StepInfo.Text).Fail(scenariocontext.TestError.Message);
+            //    if (stepType == "Then")
+            //        scenario.CreateNode("Then", ScenarioStepContext.Current.StepInfo.Text).Fail(scenariocontext.TestError.Message);
+            //    if (stepType == "And")
+            //        scenario.CreateNode("And", ScenarioStepContext.Current.StepInfo.Text).Fail(scenariocontext.TestError.Message);
+            //}
         }
 
         [AfterScenario]
@@ -88,7 +88,7 @@ namespace MarsQA_1.Utils
             string img = SaveScreenShotClass.SaveScreenshot(driver, "Screenshot");
 
             // Attaching screenshot to report
-            scenario.AddScreenCaptureFromPath(img);
+            // scenario.AddScreenCaptureFromPath(img);
 
             //Close the browser
             Close();
@@ -97,7 +97,7 @@ namespace MarsQA_1.Utils
         [AfterTestRun]
         public static void TearDownReport()
         {
-            extent.Flush();
+            // extent.Flush();
         }
     }
 }
