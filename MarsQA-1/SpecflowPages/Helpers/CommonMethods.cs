@@ -31,18 +31,5 @@ namespace MarsQA_1.Helpers
                 return fileName.ToString();
             }
         }
-
-        //ExtentReports
-
-        //public static ExtentTest test;
-        // public static ExtentReports Extent;
-
-        //public static void ExtentReports()
-        //{
-            //Extent = new ExtentReports(ConstantHelpers.ReportsPath, true, DisplayOrder.NewestFirst);
-            //Extent.LoadConfig(ConstantHelpers.ReportXMLPath);
-        //}
     }
 }
-
-

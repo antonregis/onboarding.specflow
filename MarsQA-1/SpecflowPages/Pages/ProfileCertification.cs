@@ -18,7 +18,7 @@ namespace MarsQA_1.Pages
             addNewButton.Click();
 
             // Referencing to an excel file and sheet name
-            ExcelLibHelper.PopulateInCollection(@"MarsQA-1\SpecflowTests\Data\Data.xlsx", "Certification");
+            ExcelLibHelper.PopulateInCollection(ConstantHelpers.ExcelDataPath, "Certification");
 
             // Enter Certificate or award
             IWebElement certificateTextbox = driver.FindElement(By.XPath("//*[@name='certificationName']"));

@@ -18,7 +18,7 @@ namespace MarsQA_1.Pages
             addNewButton.Click();
 
             // Referencing to an excel file and sheet name
-            ExcelLibHelper.PopulateInCollection(@"MarsQA-1\SpecflowTests\Data\Data.xlsx", "Skill");
+            ExcelLibHelper.PopulateInCollection(ConstantHelpers.ExcelDataPath, "Skill");
 
             // Enter Skill
             IWebElement addSkillTextbox = Driver.FindElement(By.XPath("//body/div[@id='account-profile-section']/div[1]/section[2]/div[1]/div[1]/div[1]/div[3]/form[1]/div[3]/div[1]/div[2]/div[1]/div[1]/div[1]/input[1]"));

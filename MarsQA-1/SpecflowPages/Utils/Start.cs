@@ -12,26 +12,25 @@ namespace MarsQA_1.Utils
     [Binding]
     public class Start : Driver
     {
-        //private static ExtentTest featureName;
-        //private static ExtentTest scenario;
-        //private static ExtentReports extent;
+        private static ExtentTest featureName;
+        private static ExtentTest scenario;
+        private static ExtentReports extent;
 
 
-        //[BeforeTestRun]
-        //public static void InitializeReport()
-        //{
-        //    var htmlReporter = new ExtentHtmlReporter(@"D:\onboarding.specflow.trial\");
-        //    extent = new ExtentReports();
-        //    extent.AttachReporter(htmlReporter);
-        //}
+        [BeforeTestRun]
+        public static void InitializeReport()
+        {
+            var htmlReporter = new ExtentHtmlReporter(ConstantHelpers.ReportsPath);
+            extent = new ExtentReports();
+            extent.AttachReporter(htmlReporter);
+        }
 
-        //[BeforeFeature]
-        //public static void BeforeFeature(FeatureContext featurecontext)
-        //{
-        //    // ExtentReport: Create test or the Feature
-        //    // featureName = extent.CreateTest<Feature>(featurecontext.FeatureInfo.Title);
-        //    featureName = extent.CreateTest("Feature", featurecontext.FeatureInfo.Title);
-        //}
+        [BeforeFeature]
+        public static void BeforeFeature(FeatureContext featurecontext)
+        {
+            // ExtentReport: Create test or the Feature
+            featureName = extent.CreateTest("Feature", featurecontext.FeatureInfo.Title);
+        }
 
         [BeforeScenario]
         public void Setup(ScenarioContext scenarioContext)
@@ -40,47 +39,47 @@ namespace MarsQA_1.Utils
             Initialize();
 
             // Referencing to an excel file and sheet name
-            ExcelLibHelper.PopulateInCollection(@"MarsQA-1\SpecflowTests\Data\Mars.xlsx", "Credentials");
+            ExcelLibHelper.PopulateInCollection(ConstantHelpers.ExcelSigninDataPath, "Credentials");
 
             // Call the SignIn class
             SignIn.SigninStep();
 
             // Wait for the page to load properly
-            Wait.WaitToBeClickable(driver, "XPath", "//a[contains(text(),'Languages')]", 5);
+            Wait.WaitToBeClickable(driver, "XPath", "//a[contains(text(),'Languages')]", 8);
 
             // ExtentReport: Create node or the Scenario
-            //scenario = featureName.CreateNode<Scenario>(scenarioContext.ScenarioInfo.Title);
+            scenario = featureName.CreateNode("Scenario", scenarioContext.ScenarioInfo.Title);
         }
 
-        //[AfterStep]
-        //public void AfterEachStep(ScenarioContext scenariocontext)
-        //{
-        //    var stepType = ScenarioStepContext.Current.StepInfo.StepDefinitionType.ToString();
+        [AfterStep]
+        public void AfterEachStep(ScenarioContext scenariocontext)
+        {
+            var stepType = ScenarioStepContext.Current.StepInfo.StepDefinitionType.ToString();
 
-        //    if (scenariocontext.TestError == null)
-        //    {
-        //        if (stepType == "Given")
-        //            scenario.CreateNode<Given>(ScenarioStepContext.Current.StepInfo.Text);
-        //        else if (stepType == "When")
-        //            scenario.CreateNode<When>(ScenarioStepContext.Current.StepInfo.Text);
-        //        else if (stepType == "Then")
-        //            scenario.CreateNode<Then>(ScenarioStepContext.Current.StepInfo.Text);
-        //        else if (stepType == "And")
-        //            scenario.CreateNode<And>(ScenarioStepContext.Current.StepInfo.Text);
-        //    }
+            if (scenariocontext.TestError == null)
+            {
+                if (stepType == "Given")
+                    scenario.CreateNode<Given>(ScenarioStepContext.Current.StepInfo.Text);
+                else if (stepType == "When")
+                    scenario.CreateNode<When>(ScenarioStepContext.Current.StepInfo.Text);
+                else if (stepType == "Then")
+                    scenario.CreateNode<Then>(ScenarioStepContext.Current.StepInfo.Text);
+                else if (stepType == "And")
+                    scenario.CreateNode<And>(ScenarioStepContext.Current.StepInfo.Text);
+            }
 
-        //    if (scenariocontext.TestError != null)
-        //    {
-        //        if (stepType == "Given")
-        //            scenario.CreateNode<Given>(ScenarioStepContext.Current.StepInfo.Text).Fail(scenariocontext.TestError.Message);
-        //        if (stepType == "When")
-        //            scenario.CreateNode<When>(ScenarioStepContext.Current.StepInfo.Text).Fail(scenariocontext.TestError.Message);
-        //        if (stepType == "Then")
-        //            scenario.CreateNode<Then>(ScenarioStepContext.Current.StepInfo.Text).Fail(scenariocontext.TestError.Message);
-        //        if (stepType == "And")
-        //            scenario.CreateNode<And>(ScenarioStepContext.Current.StepInfo.Text).Fail(scenariocontext.TestError.Message);
-        //    }
-        //}
+            if (scenariocontext.TestError != null)
+            {
+                if (stepType == "Given")
+                    scenario.CreateNode<Given>(ScenarioStepContext.Current.StepInfo.Text).Fail(scenariocontext.TestError.Message);
+                if (stepType == "When")
+                    scenario.CreateNode<When>(ScenarioStepContext.Current.StepInfo.Text).Fail(scenariocontext.TestError.Message);
+                if (stepType == "Then")
+                    scenario.CreateNode<Then>(ScenarioStepContext.Current.StepInfo.Text).Fail(scenariocontext.TestError.Message);
+                if (stepType == "And")
+                    scenario.CreateNode<And>(ScenarioStepContext.Current.StepInfo.Text).Fail(scenariocontext.TestError.Message);
+            }
+        }
 
         [AfterScenario]
         public void TearDownScenario()
@@ -89,20 +88,16 @@ namespace MarsQA_1.Utils
             string img = SaveScreenShotClass.SaveScreenshot(driver, "Screenshot");
 
             // Attaching screenshot to report
-            var extent = new ExtentReports();
-            var test = extent.CreateTest("ReportScreenshot");
-            test.AddScreenCaptureFromPath(img);
-
-            // scenario.AddScreenCaptureFromPath(img);
+            scenario.AddScreenCaptureFromPath(img);
 
             //Close the browser
             Close();
         }
 
-        //[AfterTestRun]
-        //public static void TearDownReport()
-        //{
-        //    extent.Flush();
-        //}
+        [AfterTestRun]
+        public static void TearDownReport()
+        {
+            extent.Flush();
+        }
     }
 }

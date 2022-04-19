@@ -18,7 +18,7 @@ namespace MarsQA_1.Pages
             addNewButton.Click();
 
             // Referencing to an excel file and sheet name
-            ExcelLibHelper.PopulateInCollection(@"MarsQA-1\SpecflowTests\Data\Data.xlsx", "Education");
+            ExcelLibHelper.PopulateInCollection(ConstantHelpers.ExcelDataPath, "Education");
 
             // Enter institute name
             IWebElement instituteTextbox = driver.FindElement(By.XPath("//*[@name='instituteName']"));
